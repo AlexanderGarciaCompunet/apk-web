@@ -1,0 +1,37 @@
+.list {
+  border: 5px dotted gray;
+  overflow-y: auto;
+}
+.add-label {
+  background-color: #171352;
+  color: #fbfbfb;
+  font: normal normal normal 15px/18px "museo_sans500";
+  border-radius: 30px;
+  width: 96px;
+  height: 31px;
+  margin-bottom: 19px;
+}
+.revoke-label {
+  background-color: #fbfbfb;
+  color: #171352;
+  font: normal normal normal 15px/18px "museo_sans500";
+  border-radius: 30px;
+  width: 96px;
+  height: 31px;
+  margin-bottom: 19px;
+}
+.modal-content {
+  border-bottom: inherit !important;
+}
+#your-modal-label {
+  font: normal normal normal 21px/25px "museo_sans500";
+  justify-content: center;
+  letter-spacing: 0px;
+  color: #6d6d6d;
+  opacity: 1;
+}
+option {
+  margin-top: 4px;
+  font: normal normal normal 15px/18px "museo_sans500";
+  color: #171352;
+}

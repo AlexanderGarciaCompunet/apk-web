@@ -1,0 +1,38 @@
+.form-control {
+  border: 0 !important;
+  border-bottom: 2px solid #9b9b9b !important;
+  outline: 0 !important;
+  color: black !important;
+  padding: 7px 0 !important;
+  background: transparent !important;
+  transition: border-color 0.2s !important;
+}
+.form-control::placeholder {
+  color: gray !important;
+}
+
+.form-control:focus {
+  padding-bottom: 6px !important;
+  font-weight: 300 !important;
+  border-width: 3px !important;
+  border-image: linear-gradient(to right, #171352, #171352) !important;
+  transition: 0.3s !important;
+  border-image-slice: 1 !important;
+}
+
+/* reset input */
+.form-control:required,
+.form-control:invalid {
+  box-shadow: none !important;
+}
+
+.input-group-text {
+  border: none !important;
+  border-bottom: 2px solid #9b9b9b !important;
+  background-color: transparent !important;
+}
+/* reset color when remember password  */
+input:-webkit-autofill {
+  -webkit-box-shadow: 200px 200px 100px white inset !important;
+  box-shadow: 200px 200px 100px white inset !important;
+}

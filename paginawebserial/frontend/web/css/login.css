@@ -1,0 +1,464 @@
+/* Login Page Styles */
+.login-page {
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+  min-height: 100vh;
+}
+
+.login-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.login-box > .card {
+  height: auto !important;
+  min-height: 450px;
+  width: 100%;
+  max-width: 850px;
+  border-radius: 15px !important;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  border: none !important;
+}
+
+.login-box > .card > .container {
+  display: flex;
+  flex-direction: row;
+  padding: 0 !important;
+  max-width: 100% !important;
+  width: 100%;
+  min-height: 450px;
+}
+
+/* Left Half - Form */
+.left-half {
+  width: 55%;
+  position: relative;
+  padding: 50px 45px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #ffffff;
+}
+
+.left-half article {
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding: 0;
+}
+
+.form-title {
+  margin-bottom: 40px;
+  text-align: left;
+  font: normal normal normal 22px/28px "museo_sans700";
+  letter-spacing: 0px;
+  color: #333333;
+  text-transform: uppercase;
+}
+
+/* Form Groups */
+.form-group-login {
+  margin-bottom: 25px;
+}
+
+.form-group-login .form-group {
+  margin-bottom: 0;
+}
+
+/* Input Wrapper - para posicionar icono */
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.login-input {
+  width: 100%;
+  border: 0 !important;
+  border-bottom: 2px solid #cccccc !important;
+  border-radius: 0 !important;
+  outline: 0 !important;
+  color: #333 !important;
+  padding: 12px 40px 12px 0 !important;
+  background: transparent !important;
+  font-size: 15px;
+  font-family: "museo_sans300";
+}
+
+.login-input::placeholder {
+  color: #999 !important;
+}
+
+.login-input:focus {
+  border-bottom: 2px solid #171352 !important;
+  box-shadow: none !important;
+}
+
+/* Input Icon */
+.input-icon {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #666;
+  font-size: 16px;
+  pointer-events: none;
+}
+
+/* Button Container */
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 35px;
+  margin-bottom: 20px;
+}
+
+/* Login Button - Estilo relleno como el original */
+.btn-login {
+  color: #ffffff !important;
+  background-color: #171352 !important;
+  border: 2px solid #171352 !important;
+  border-radius: 30px;
+  padding: 12px 80px;
+  font-weight: 500;
+  font-size: 15px;
+  font-family: "museo_sans500";
+  transition: all 0.3s ease;
+  text-transform: none;
+  letter-spacing: 0.5px;
+}
+
+.btn-login:hover {
+  background-color: #0e0c36 !important;
+  border-color: #0e0c36 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(23, 19, 82, 0.3);
+}
+
+.btn-login:focus,
+.btn-login.focus {
+  box-shadow: 0 0 0 0.2rem rgba(23, 19, 82, 0.3);
+}
+
+.btn-login:active {
+  background-color: #0a0826 !important;
+  border-color: #0a0826 !important;
+}
+
+/* Help Link */
+.help-link-container {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.help-link {
+  text-decoration: none;
+  font-size: 14px;
+  color: #888;
+  font-family: "museo_sans300";
+  transition: all 0.3s ease;
+}
+
+.help-link:hover {
+  color: #171352;
+  text-decoration: underline;
+}
+
+/* Right Half - Branding */
+.right-half {
+  background: #171352;
+  border-radius: 0px 15px 15px 0px;
+  position: relative;
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px 30px;
+}
+
+.right-half::before {
+  content: "";
+  background-image: url("../img/login-bg.png");
+  background-position: center;
+  border-radius: 0px 15px 15px 0px;
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.right-half article {
+  position: relative;
+  z-index: 1;
+  padding: 0;
+  width: 100%;
+}
+
+.title-description {
+  text-align: right;
+  font: normal normal normal 20px/28px "museo_sans700";
+  letter-spacing: 2px;
+  color: #ffffff;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.title-content {
+  text-align: right;
+  line-height: 24px;
+  color: rgba(255, 255, 255, 0.85);
+  margin-top: 20px;
+  font: normal normal normal 15px/24px "museo_sans300";
+}
+
+/* Logo COMPUNET - Abajo del panel derecho */
+.logo-container {
+  position: relative;
+  z-index: 1;
+  text-align: right;
+  margin-top: auto;
+}
+
+.logo-compunet {
+  width: 140px;
+  height: auto;
+  max-width: 100%;
+}
+
+/* Help Modal Styles */
+.help-modal-content {
+  padding: 10px 0;
+}
+
+.help-section-title {
+  color: #171352;
+  font-family: "museo_sans700";
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.help-section-title i {
+  color: #819620;
+}
+
+.help-text {
+  color: #555;
+  font-family: "museo_sans300";
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.help-divider {
+  border-top: 1px solid #e0e0e0;
+  margin: 20px 0;
+}
+
+.help-list {
+  padding-left: 20px;
+  margin: 0;
+}
+
+.help-list li {
+  color: #555;
+  font-family: "museo_sans300";
+  font-size: 13px;
+  line-height: 1.8;
+  margin-bottom: 8px;
+}
+
+.help-list li strong {
+  color: #171352;
+  font-family: "museo_sans500";
+}
+
+/* Modal customizations */
+#help_modal {
+  display: none;
+}
+
+#help_modal.show {
+  display: block;
+}
+
+#help_modal .modal-header {
+  background-color: #171352;
+  color: white;
+  border-radius: 0;
+}
+
+#help_modal .modal-title {
+  color: white;
+  font-family: "museo_sans700";
+}
+
+#help_modal .modal-header .close {
+  color: white;
+  opacity: 0.8;
+}
+
+#help_modal .modal-header .close:hover {
+  opacity: 1;
+}
+
+/* Error messages */
+.help-block {
+  color: #dc3545;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+/* Responsive - Tablet */
+@media only screen and (max-width: 992px) {
+  .login-box > .card {
+    max-width: 700px;
+  }
+
+  .left-half {
+    width: 55%;
+    padding: 40px 35px;
+  }
+
+  .right-half {
+    width: 45%;
+    padding: 30px 25px;
+  }
+
+  .logo-compunet {
+    width: 120px;
+  }
+
+  .title-description {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .title-content {
+    font-size: 13px;
+    line-height: 20px;
+  }
+
+  .btn-login {
+    padding: 10px 60px;
+  }
+}
+
+/* Responsive - Mobile */
+@media only screen and (max-width: 768px) {
+  .login-box {
+    padding: 15px;
+    min-height: 100vh;
+  }
+
+  .login-box > .card {
+    max-width: 100%;
+    min-height: auto;
+  }
+
+  .login-box > .card > .container {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .left-half {
+    width: 100%;
+    padding: 35px 30px;
+    order: 2;
+    border-radius: 0 0 15px 15px;
+  }
+
+  .right-half {
+    width: 100%;
+    min-height: auto;
+    border-radius: 15px 15px 0px 0px;
+    order: 1;
+    padding: 25px 20px;
+    align-items: center;
+  }
+
+  .right-half::before {
+    border-radius: 15px 15px 0px 0px;
+  }
+
+  .logo-container {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .logo-compunet {
+    width: 110px;
+  }
+
+  .right-half article {
+    text-align: center;
+  }
+
+  .title-description {
+    text-align: center;
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .title-content {
+    display: none;
+  }
+
+  .form-title {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 30px;
+  }
+
+  .btn-login {
+    padding: 10px 50px;
+    width: auto;
+  }
+}
+
+/* Responsive - Small Mobile */
+@media only screen and (max-width: 480px) {
+  .login-box {
+    padding: 10px;
+  }
+
+  .left-half {
+    padding: 30px 25px;
+  }
+
+  .right-half {
+    padding: 20px 15px;
+  }
+
+  .logo-compunet {
+    width: 100px;
+  }
+
+  .title-description {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .form-title {
+    font-size: 16px;
+    margin-bottom: 25px;
+  }
+
+  .btn-login {
+    padding: 10px 40px;
+    font-size: 14px;
+  }
+
+  .login-input {
+    font-size: 14px;
+    padding: 10px 35px 10px 0 !important;
+  }
+}

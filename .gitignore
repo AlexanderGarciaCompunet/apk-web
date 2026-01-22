@@ -1,0 +1,69 @@
+# Flutter/Dart
+**/build/
+**/.dart_tool/
+**/.flutter-plugins
+**/.flutter-plugins-dependencies
+**/.packages
+**/pubspec.lock
+
+# Android
+**/android/.gradle/
+**/android/gradle/
+**/android/.idea/
+**/android/local.properties
+**/android/captures/
+**/android/app/debug/
+**/android/app/release/
+**/android/app/profile/
+**/android/app/*.jks
+**/android/app/*.keystore
+
+# iOS
+**/ios/Pods/
+**/ios/.symlinks/
+**/ios/Flutter/Flutter.framework
+**/ios/Flutter/Flutter.podspec
+**/ios/**/*.mode1v3
+**/ios/**/*.mode2v3
+**/ios/**/*.moved-aside
+**/ios/**/*.pbxuser
+**/ios/**/*.perspectivev3
+**/ios/**/*sync/
+**/ios/**/.sconsign.dblite
+**/ios/**/.tags*
+**/ios/**/.vagrant/
+**/ios/**/DerivedData/
+**/ios/**/Icon?
+**/ios/**/Pods/
+**/ios/**/.generated/
+
+# Windows
+**/windows/flutter/ephemeral/
+**/windows/flutter/.plugin_symlinks/
+
+# MacOS
+**/macos/Flutter/ephemeral/
+
+# Linux
+**/linux/flutter/ephemeral/
+
+# PHP/Yii
+**/vendor/
+**/runtime/
+**/web/assets/
+**/tests/_output/
+
+# IDEs
+**/.idea/
+**/.vscode/
+**/*.swp
+**/*.swo
+**/*~
+
+# Logs
+**/*.log
+
+# OS
+**/.DS_Store
+**/Thumbs.db
+nul

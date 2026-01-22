@@ -1,0 +1,419 @@
+#Nuevoo_inicia_aqui html,
+body {
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+.parent {
+  height: 20vh;
+}
+.parent > .row {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.col img {
+  height: 100px;
+  width: 100%;
+  cursor: pointer;
+  transition: transform 1s;
+  object-fit: cover;
+}
+.col label {
+  overflow: hidden;
+  position: relative;
+}
+.imgbgchk:checked + label > .tick_container {
+  opacity: 1;
+}
+/*         aNIMATION */
+.imgbgchk:checked + label > img {
+  transform: scale(1.25);
+  opacity: 0.3;
+}
+.tick_container {
+  transition: 0.5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  cursor: pointer;
+  text-align: center;
+}
+.tick {
+  background-color: #4caf50;
+  color: white;
+  font-size: 16px;
+  padding: 6px 12px;
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+}
+
+#Finaliza_nuevo_aqui :root {
+  --primary-color: #171352;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* Alineación de etiquetas con Select2 */
+.form-group.row {
+  align-items: center;
+}
+
+.form-group.row > label {
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  min-height: 38px;
+}
+
+.form-group.row .select2-container {
+  width: 100% !important;
+}
+
+.show_carousel {
+  display: none !important;
+}
+
+input {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  height: 50px;
+}
+
+/* .width-50 {
+  width: 40%;
+} */
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.progressbar {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  counter-reset: step;
+  margin: 2rem 0 4rem;
+}
+
+.progressbar::before,
+.progress {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 4px;
+  width: 100%;
+  background-color: #dcdcdc;
+  z-index: 1;
+}
+
+.progress {
+  background-color: rgb(0 128 0);
+  width: 0%;
+  transition: 0.3s;
+}
+
+.progress-step {
+  width: 2.1875rem;
+  height: 2.1875rem;
+  background-color: #dcdcdc;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.progress-step::before {
+  counter-increment: step;
+  content: counter(step);
+  color: black;
+}
+
+.progress-step::after {
+  content: attr(data-title);
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.progress-step-active {
+  background-color: #dcdcdc;
+  color: black;
+}
+
+.form {
+  margin: 0 auto;
+  border: none;
+  border-radius: 10px !important;
+  overflow: hidden;
+  padding: 1.5rem;
+  background-color: #fff;
+  padding: 20px 30px;
+}
+
+.step-forms {
+  display: none;
+  transform-origin: top;
+  animation: animate 1s;
+}
+
+.step-forms-active {
+  display: block;
+}
+
+.group-inputs {
+  margin: 1rem 0;
+}
+
+@keyframes animate {
+  from {
+    transform: scale(1, 0);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1, 1);
+    opacity: 1;
+  }
+}
+
+.btns-group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.btn {
+  padding: 0.75rem;
+  display: block;
+  text-decoration: none;
+  background-color: var(--primary-color);
+  color: #f3f3f3;
+  text-align: center;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--primary-color);
+}
+
+.progress-step-check {
+  position: relative;
+  background-color: green !important;
+  transition: all 0.8s;
+}
+
+.progress-step-check::before {
+  position: absolute;
+  content: "\2713";
+  width: 100%;
+  height: 100%;
+  top: 8px;
+  left: 13px;
+  font-size: 12px;
+}
+
+.group-inputs {
+  position: relative;
+}
+
+.group-inputs label {
+  font-size: 13px;
+  position: absolute;
+  height: 19px;
+  padding: 4px 7px;
+  top: -14px;
+  left: 10px;
+  color: #a2a2a2;
+  background-color: white;
+}
+
+.welcome {
+  height: 450px;
+  width: 350px;
+  background-color: #fff;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.welcome .content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.checkmark__circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke-width: 2;
+  stroke-miterlimit: 10;
+  stroke: #7ac142;
+  fill: none;
+  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.checkmark {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: block;
+  stroke-width: 2;
+  stroke: #fff;
+  stroke-miterlimit: 10;
+  margin: 10% auto;
+  box-shadow: inset 0px 0px 0px #7ac142;
+  animation: fill 0.4s ease-in-out 0.4s forwards,
+    scale 0.3s ease-in-out 0.9s both;
+}
+
+.checkmark__check {
+  transform-origin: 50% 50%;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
+
+@keyframes stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes scale {
+  0%,
+  100% {
+    transform: none;
+  }
+
+  50% {
+    transform: scale3d(1.1, 1.1, 1);
+  }
+}
+
+@keyframes fill {
+  100% {
+    box-shadow: inset 0px 0px 0px 30px #7ac142;
+  }
+}
+.card {
+  border-radius: 10px !important;
+}
+
+/* class applies to select element itself, not a wrapper element */
+.select-css {
+  display: block;
+  font-size: 16px;
+  font-family: sans-serif;
+  font-weight: 700;
+  color: #444;
+  line-height: 1.3;
+  padding: 0.6em 1.4em 0.5em 0.8em;
+  width: 100%;
+  max-width: 100%; /* useful when width is set to anything other than 100% */
+  box-sizing: border-box;
+  margin: 0;
+  border: 1px solid #aaa;
+  box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
+  border-radius: 0.5em;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #fff;
+  /* note: bg image below uses 2 urls. The first is an svg data uri for the arrow icon, and the second is the gradient. 
+    for the icon, if you want to change the color, be sure to use `%23` instead of `#`, since it's a url. You can also swap in a different svg icon or an external image reference
+    
+  */
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"),
+    linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
+  background-repeat: no-repeat, repeat;
+  /* arrow icon position (1em from the right, 50% vertical) , then gradient position*/
+  background-position: right 0.7em top 50%, 0 0;
+  /* icon size, then gradient */
+  background-size: 0.65em auto, 100%;
+}
+/* Hide arrow icon in IE browsers */
+.select-css::-ms-expand {
+  display: none;
+}
+/* Hover style */
+.select-css:hover {
+  border-color: #888;
+}
+/* Focus style */
+.select-css:focus {
+  border-color: #aaa;
+  /* It'd be nice to use -webkit-focus-ring-color here but it doesn't work on box-shadow */
+  box-shadow: 0 0 1px 3px rgba(59, 153, 252, 0.7);
+  box-shadow: 0 0 0 3px -moz-mac-focusring;
+  color: #222;
+  outline: none;
+}
+
+/* Set options to normal weight */
+.select-css option {
+  font-weight: normal;
+}
+
+/* Support for rtl text, explicit support for Arabic and Hebrew */
+*[dir="rtl"] .select-css,
+:root:lang(ar) .select-css,
+:root:lang(iw) .select-css {
+  background-position: left 0.7em top 50%, 0 0;
+  padding: 0.6em 0.8em 0.5em 1.4em;
+}
+
+/* Disabled styles */
+.select-css:disabled,
+.select-css[aria-disabled="true"] {
+  color: graytext;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22graytext%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"),
+    linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
+}
+
+.select-css:disabled:hover,
+.select-css[aria-disabled="true"] {
+  border-color: #aaa;
+}
+
+#divMsg {
+  display: none;
+}
+
+/* HIDE RADIO */
+[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* IMAGE STYLES */
+[type="radio"] + img {
+  cursor: pointer;
+}
+
+/* CHECKED STYLES - Compunet branding */
+[type="radio"]:checked + img {
+  outline: 3px solid #171352;
+}

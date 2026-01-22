@@ -1,0 +1,10 @@
+.column {
+  /* width: 33.33%; */
+  justify-content: center;
+  padding: 5px;
+}
+
+.img {
+  width: 410px;
+  height: 150px;
+}
