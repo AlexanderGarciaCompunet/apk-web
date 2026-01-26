@@ -30,9 +30,12 @@ class AuthService {
   static Future<LoginResponse> login(String email, String password) async {
     try {
       final baseUrl = getBaseUrl();
-        headers: {'Content-Type': 'application/json'},
-        body: jsonEncode({'username': email, 'password': password}),
-      )
+      final response = await http
+          .post(
+            Uri.parse('$baseUrl/auth/login'),
+            headers: {'Content-Type': 'application/json'},
+            body: jsonEncode({'username': email, 'password': password}),
+          )
           .timeout(
         const Duration(seconds: 30),
         onTimeout: () {
