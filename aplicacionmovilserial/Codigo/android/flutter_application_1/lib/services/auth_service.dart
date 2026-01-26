@@ -5,7 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class AuthService {
   // Cambia esta URL a tu servidor
   static const String baseUrl = 'http://190.216.201.61/api';
-  
+
   // Guardar token localmente
   static Future<void> saveToken(String token) async {
     final prefs = await SharedPreferences.getInstance();
@@ -21,23 +21,24 @@ class AuthService {
   // Realizar login
   static Future<LoginResponse> login(String email, String password) async {
     try {
-      final response = await http.post(
-        Uri.parse('$baseUrl/auth/login'),
-        headers: {'Content-Type': 'application/json'},
-        body: jsonEncode({
-          'email': email,
-          'password': password,
-        }),
-      ).timeout(
-        const Duration(seconds: 30),
-        onTimeout: () {
-          throw Exception('Timeout en la petición. El servidor tardó demasiado.');
-        },
-      );
+      final response = await http
+          .post(
+            Uri.parse('$baseUrl/auth/login'),
+            headers: {'Content-Type': 'application/json'},
+            body: jsonEncode({'username': email, 'password': password}),
+          )
+          .timeout(
+            const Duration(seconds: 30),
+            onTimeout: () {
+              throw Exception(
+                'Timeout en la petición. El servidor tardó demasiado.',
+              );
+            },
+          );
 
       if (response.statusCode == 200) {
         final json = jsonDecode(response.body);
-        
+
         // Validar que la respuesta tenga la estructura esperada
         if (json['status'] == 'success' && json['data'] != null) {
           final token = json['data']['token'];
@@ -72,10 +73,7 @@ class AuthService {
         );
       }
     } catch (e) {
-      return LoginResponse(
-        success: false,
-        message: 'Error de conexión: $e',
-      );
+      return LoginResponse(success: false, message: 'Error de conexión: $e');
     }
   }
 
