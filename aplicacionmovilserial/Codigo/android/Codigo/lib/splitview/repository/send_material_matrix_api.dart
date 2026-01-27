@@ -1,7 +1,6 @@
 import 'package:http/http.dart' as http;
 
 import 'package:almaviva_integration/config/config_access.dart';
-import 'package:almaviva_integration/config/crypter_methods.dart';
 import 'package:almaviva_integration/db/db.dart';
 
 class SendMaterialMatrixAPI {
@@ -10,7 +9,8 @@ class SendMaterialMatrixAPI {
     Uri url = Uri.parse(ConfigEndpointsAccess.pathServerAccess + path);
     final token = HiveDB.getBoxUser().get("token");
     print(resp);
-    resp = Cypher.cypherToJson(resp);
+    // MODO DEMO - Sin cifrado
+    // resp = Cypher.cypherToJson(resp);
     http.Response respHttp = await http
         .post(url,
             headers: {
@@ -21,11 +21,12 @@ class SendMaterialMatrixAPI {
         .timeout(
       const Duration(seconds: 120),
       onTimeout: () {
-        return Cypher.defaultResponseConvert(http.Response('error', 500));
+        return http.Response('error', 500);
         // Replace 500 with your http code.
       },
     );
-    respHttp = Cypher.convertResponse(respHttp);
+    // MODO DEMO - Sin descifrado
+    // respHttp = Cypher.convertResponse(respHttp);
 
     if (respHttp.statusCode <= 500) {
       // Si la llamada al servidor fue exitosa, analiza el JSON

@@ -1,5 +1,4 @@
 import 'package:almaviva_integration/config/config_access.dart';
-import 'package:almaviva_integration/config/crypter_methods.dart';
 import 'package:almaviva_integration/db/db.dart';
 import 'package:http/http.dart' as http;
 
@@ -9,7 +8,8 @@ class SendPalletMastertoServerApi {
 
     Uri url = Uri.parse(ConfigEndpointsAccess.pathServerAccess + path);
     final token = HiveDB.getBoxUser().get("token");
-    pallet = Cypher.cypherToJson(pallet);
+    // MODO DEMO - Sin cifrado
+    // pallet = Cypher.cypherToJson(pallet);
     http.Response respHttp = await http
         .post(url,
             headers: {
@@ -20,11 +20,12 @@ class SendPalletMastertoServerApi {
         .timeout(
       const Duration(seconds: 20),
       onTimeout: () {
-        return Cypher.defaultResponseConvert(http.Response('error', 500));
+        return http.Response('error', 500);
         // Replace 500 with your http code.
       },
     );
-    respHttp = Cypher.convertResponse(respHttp);
+    // MODO DEMO - Sin descifrado
+    // respHttp = Cypher.convertResponse(respHttp);
     print(respHttp.body);
     if (respHttp.statusCode <= 500) {
       // Si la llamada al servidor fue exitosa, analiza el JSON

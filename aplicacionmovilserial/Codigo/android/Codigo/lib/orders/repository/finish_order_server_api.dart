@@ -1,5 +1,4 @@
 import 'package:almaviva_integration/config/config_access.dart';
-import 'package:almaviva_integration/config/crypter_methods.dart';
 import 'package:almaviva_integration/db/db.dart';
 import 'package:http/http.dart' as http;
 
@@ -18,11 +17,12 @@ class SendOrderServerApi {
     ).timeout(
       const Duration(seconds: 20),
       onTimeout: () {
-        return Cypher.defaultResponseConvert(http.Response('error', 500));
+        return http.Response('error', 500);
         // Replace 500 with your http code.
       },
     );
-    Cypher.convertResponse(respHttp);
+    // MODO DEMO - Sin descifrado
+    // Cypher.convertResponse(respHttp);
     if (respHttp.statusCode < 300) {
       // Si la llamada al servidor fue exitosa, analiza el JSON
       return respHttp;

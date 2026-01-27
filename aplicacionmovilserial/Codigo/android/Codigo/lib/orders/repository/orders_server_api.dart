@@ -1,5 +1,4 @@
 import 'package:almaviva_integration/config/config_access.dart';
-import 'package:almaviva_integration/config/crypter_methods.dart';
 import 'package:almaviva_integration/db/db.dart';
 import 'package:http/http.dart' as http;
 
@@ -16,7 +15,8 @@ class OrdersListServerApi {
         'Authorization': 'Bearer $token',
       },
     );
-    respHttp = Cypher.convertResponse(respHttp);
+    // MODO DEMO - Sin descifrado
+    // respHttp = Cypher.convertResponse(respHttp);
     print("OrdersListServerApi: " + respHttp.body);
     if (respHttp.statusCode < 300) {
       // Si la llamada al servidor fue exitosa, analiza el JSON
