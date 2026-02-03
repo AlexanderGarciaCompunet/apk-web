@@ -22,17 +22,35 @@ class ListOrder extends StatefulWidget {
 
 class _ListOrder extends State<ListOrder> {
   late int type;
+  late OrderBloc _orderBloc;
+
   @override
   void initState() {
     super.initState();
-    var _orderBloc = Provider.of<OrderBloc>(context, listen: false);
-    WidgetsBinding.instance!.addPostFrameCallback((value) => consultCodeErrorsForAction());
-    _orderBloc.socket = IO.io('http://${ConfigEndpointsAccess.ipAddress}:8081',
+    _orderBloc = Provider.of<OrderBloc>(context, listen: false);
+    WidgetsBinding.instance.addPostFrameCallback((value) => consultCodeErrorsForAction());
+    _initializeSocket();
+  }
+
+  void _initializeSocket() {
+    // Desconectar socket anterior si existe
+    _orderBloc.disconnectSocket();
+
+    // Crear y conectar nuevo socket
+    final newSocket = IO.io('http://${ConfigEndpointsAccess.ipAddress}:8081',
         IO.OptionBuilder().setTransports(['websocket']).setExtraHeaders({'foo': 'bar'}).build());
 
-    _orderBloc.socket.connect();
+    _orderBloc.initSocket(newSocket);
+    newSocket.connect();
     _orderBloc.setUpSocketListener();
     _orderBloc.emitUpdateOrders();
+  }
+
+  @override
+  void dispose() {
+    // Desconectar socket al salir de la pantalla
+    _orderBloc.disconnectSocket();
+    super.dispose();
   }
 
   void consultCodeErrorsForAction() async {

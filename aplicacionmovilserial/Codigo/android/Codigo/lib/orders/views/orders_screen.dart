@@ -42,7 +42,7 @@ class OrderScreen extends StatelessWidget {
                               callback: () {
                                 Provider.of<OrderBloc>(context, listen: false)
                                     .socket
-                                    .off('updateOrder');
+                                    ?.off('updateOrder');
                                 Navigator.pop(context);
                               },
                             ),

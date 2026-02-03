@@ -33,9 +33,32 @@ class OrderBloc extends Bloc with ChangeNotifier {
   //real time
   Map<String, dynamic> daata = <String, dynamic>{};
   int total = 0;
-  late IO.Socket socket;
+  IO.Socket? socket;
+  bool _isSocketInitialized = false;
   //modo de lectura
   late String lectureMode;
+
+  // Dispose para limpiar recursos
+  @override
+  void dispose() {
+    disconnectSocket();
+    super.dispose();
+  }
+
+  // Desconectar socket de forma segura
+  void disconnectSocket() {
+    if (_isSocketInitialized && socket != null) {
+      socket!.disconnect();
+      socket!.dispose();
+      _isSocketInitialized = false;
+    }
+  }
+
+  // Inicializar socket
+  void initSocket(IO.Socket newSocket) {
+    socket = newSocket;
+    _isSocketInitialized = true;
+  }
   late List<String> newMaterial = [];
   late List<OrderModel> orders = [];
   late List<OrderModel> auxiliarList = [];
@@ -50,7 +73,8 @@ class OrderBloc extends Bloc with ChangeNotifier {
 
   //socket de actualización de orden
   void setUpSocketListener() {
-    socket.on('updateOrder', (inOrder) {
+    if (socket == null) return;
+    socket!.on('updateOrder', (inOrder) {
       print("inorder $inOrder");
       dynamic orderUpdate = json.decode(inOrder);
 
@@ -66,19 +90,22 @@ class OrderBloc extends Bloc with ChangeNotifier {
 
   //emicion de orden
   void emitUpdateOrders() {
-    socket.emit('updateOrders');
+    if (socket == null) return;
+    socket!.emit('updateOrders');
   }
 
   //Emición de conexión a una orden con estatus 1 (en proceso)
   void emitConnectionOrder(OrderModel orderModel) {
-    socket.emit('newOperator', {"idOrder": orderModel.id, "status": 1});
+    if (socket == null) return;
+    socket!.emit('newOperator', {"idOrder": orderModel.id, "status": 1});
   }
 
   //Emición de desconexión a una orden con estatus 0 (terminada)
   void emitDisconectionOrder() {
+    if (socket == null) return;
     final boxWorkOrder = HiveDB.getBoxWorkOrder();
     OrderModel orderModel = boxWorkOrder.get('currentOrder');
-    socket.emit('newOperator', {"idOrder": orderModel.id, "status": 0});
+    socket!.emit('newOperator', {"idOrder": orderModel.id, "status": 0});
   }
 
   // actualizar tipo de captura
@@ -155,7 +182,7 @@ class OrderBloc extends Bloc with ChangeNotifier {
         notifyListeners();
         return CodeError.ResourceNotFound.valueCode;
       }
-    } on Exception catch (e) {
+    } on Exception {
       print("error al ejecutar la consulta ordenes");
     }
     return CodeError.ConnectionFailed.valueCode;

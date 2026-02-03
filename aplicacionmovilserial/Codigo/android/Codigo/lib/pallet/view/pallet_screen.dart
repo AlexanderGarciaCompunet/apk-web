@@ -18,7 +18,7 @@ class _LecturePalletScreenState extends State<LecturePalletScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    WidgetsBinding.instance?.addPostFrameCallback((_) async {
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
       var permissionSatus = await Permission.camera.request();
 
       if (permissionSatus != PermissionStatus.granted) {}

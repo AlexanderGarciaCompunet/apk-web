@@ -84,9 +84,9 @@ class _OperationScreenState extends State<OperationScreen> {
                     OperationCardSelection(
                         imagePath:
                             'https://www.grupovalora.es/wp-content/uploads/2016/02/Valora-Soluciones-Logisticas.jpg',
-                        title: 'Ingresos',
+                        title: 'Recibo',
                         description:
-                            'Seleccione esta opción para ver un listado de los documentos de ingresos de mercancia.',
+                            'Seleccione esta opción para ver un listado de los documentos de recibo de mercancía.',
                         callback: () {
                           HiveDB.getBoxUser().put('operation', 1);
                           Navigator.pushNamed(context, BCRoutes.Order_screen.routeName);
@@ -94,25 +94,16 @@ class _OperationScreenState extends State<OperationScreen> {
                     const SizedBox(
                       height: 20,
                     ),
-                    // Consumer<OrderBloc>(
-                    //   builder: (_, value, __) {
-                    //     return Text(
-                    //       'Este es el valor: ${_orderBloc.total}',
-                    //       textAlign: TextAlign.start,
-                    //       style: TextStyle(
-                    //           color: AppColors.primary,
-                    //           fontSize: 20,
-                    //           fontWeight: FontWeight.w500),
-                    //     );
-                    //   },
-                    // ),
-
-                    // OperationCardSelection(
-                    //   imagePath: 'https://img.yapo.cl/images/80/8035799805.jpg',
-                    //   title: 'despachos',
-                    //   description: 'descripción de la operación',
-                    //   callback: () {},
-                    // )
+                    OperationCardSelection(
+                        imagePath:
+                            'https://img.yapo.cl/images/80/8035799805.jpg',
+                        title: 'Pedido',
+                        description:
+                            'Seleccione esta opción para ver un listado de los documentos de pedidos.',
+                        callback: () {
+                          HiveDB.getBoxUser().put('operation', 2);
+                          Navigator.pushNamed(context, BCRoutes.Order_screen.routeName);
+                        }),
                   ],
                 ),
               ),

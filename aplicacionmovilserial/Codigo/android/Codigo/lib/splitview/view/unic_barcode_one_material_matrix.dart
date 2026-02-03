@@ -53,7 +53,7 @@ class _UnicMatrixScanScreen extends State<UnicMatrixScanScreen> with WidgetsBind
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance?.addObserver(this);
+    WidgetsBinding.instance.addObserver(this);
     asingMaterialQuantity();
     _bloc.messagePopUp.listen((event) {
       CodesErrorsCustom.genericAlertAction(event, context);
@@ -245,7 +245,7 @@ class _UnicMatrixScanScreen extends State<UnicMatrixScanScreen> with WidgetsBind
 
   @override
   void dispose() {
-    WidgetsBinding.instance?.removeObserver(this);
+    WidgetsBinding.instance.removeObserver(this);
     try {
       _bloc.dispose();
     } catch (e) {

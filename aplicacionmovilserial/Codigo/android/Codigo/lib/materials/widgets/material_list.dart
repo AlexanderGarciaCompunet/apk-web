@@ -20,7 +20,7 @@ class _MaterialListState extends State<MaterialList> {
   void initState() {
     super.initState();
 
-    WidgetsBinding.instance!.addPostFrameCallback((value) {
+    WidgetsBinding.instance.addPostFrameCallback((value) {
       consultCodeErrorsForAction();
     });
     enableListenerGetCount();
@@ -28,7 +28,9 @@ class _MaterialListState extends State<MaterialList> {
 
   void enableListenerGetCount() {
     var materialBloc = Provider.of<MaterialBloc>(context, listen: false);
-    Provider.of<OrderBloc>(context, listen: false).socket.on('getCount', (data) {
+    var orderBloc = Provider.of<OrderBloc>(context, listen: false);
+    if (orderBloc.socket == null) return;
+    orderBloc.socket!.on('getCount', (data) {
       print("hola estoy aqui $data");
       materialBloc.updateMaterialPosition(data);
     });
@@ -70,8 +72,8 @@ class _MaterialListState extends State<MaterialList> {
                                   if (materialBloc.materials.isNotEmpty) {
                                     orderBloc.selectedMaterial(materialBloc.materials[index]);
                                     // orderBloc.materialConfigModel.prefix.clear();
-                                    orderBloc.socket.off('updateOrder');
-                                    orderBloc.socket.off('getCount');
+                                    orderBloc.socket?.off('updateOrder');
+                                    orderBloc.socket?.off('getCount');
                                     Navigator.pushNamed(
                                             context, BCRoutes.LectureMode_screen.routeName)
                                         .then((value) {

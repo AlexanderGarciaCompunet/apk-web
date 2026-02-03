@@ -103,6 +103,7 @@ class _TagScreenState extends State<TagScreen> {
                                             tag: tagBloc.tags[index],
                                           );
                                         }
+                                        return null;
                                       },
                                       childCount: tagBloc.tags.length,
                                     ),

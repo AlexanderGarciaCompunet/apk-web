@@ -56,7 +56,7 @@ class _MaterialScreen extends State<MaterialScreen> {
                                   callback: () {
                                     Provider.of<OrderBloc>(context, listen: false)
                                         .socket
-                                        .off('getCount');
+                                        ?.off('getCount');
                                     Navigator.pop(context);
                                   }),
                               const SearchGuideWidget()
@@ -162,7 +162,7 @@ class _MaterialScreen extends State<MaterialScreen> {
                                                   context);
                                             } else {
                                               _orderBloc.emitDisconectionOrder();
-                                              _orderBloc.socket.off('getCount');
+                                              _orderBloc.socket?.off('getCount');
 
                                               Navigator.pop(context);
                                             }

@@ -93,6 +93,7 @@ class _AppRootState extends State<AppRoot> {
 
   @override
   void dispose() {
+    _timer.cancel(); // Cancelar el timer para evitar múltiples timers activos
     Hive.deleteBoxFromDisk('workorder');
     Hive.deleteBoxFromDisk('users');
     Hive.close();
@@ -212,21 +213,41 @@ class AuthWrapper extends StatefulWidget {
 }
 
 class _AuthWrapperState extends State<AuthWrapper> {
+  bool? _isLoggedIn;
+  bool _isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _checkLoginStatus();
+  }
+
+  Future<void> _checkLoginStatus() async {
+    final isLoggedIn = await AuthService.isLoggedIn();
+    if (mounted) {
+      setState(() {
+        _isLoggedIn = isLoggedIn;
+        _isLoading = false;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<bool>(
-      future: AuthService.isLoggedIn(),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return Scaffold(
-            body: Center(
-              child: CircularProgressIndicator(),
-            ),
-          );
-        }
+    if (_isLoading) {
+      return const Scaffold(
+        body: Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
+    }
 
-        // Si hay sesión activa, mostrar home, sino login
-        if (snapshot.data == true) {
+    return _buildContent();
+  }
+
+  Widget _buildContent() {
+    // Si hay sesión activa, mostrar home, sino login
+    if (_isLoggedIn == true) {
           // Mostrar la primera pantalla del home (Ubication)
           return ChangeNotifierProvider(
             create: (context) => OrderBloc(),
@@ -283,13 +304,11 @@ class _AuthWrapperState extends State<AuthWrapper> {
               ),
             ),
           );
-        } else {
-          // No hay sesión, mostrar login
-          return LoginScreenView(
-            initializeTimer: widget.initializeTimer,
-          );
-        }
-      },
-    );
+    } else {
+      // No hay sesión, mostrar login
+      return LoginScreenView(
+        initializeTimer: widget.initializeTimer,
+      );
+    }
   }
 }
